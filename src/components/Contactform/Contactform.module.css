@@ -1,0 +1,68 @@
+.namebox {
+  display: block;
+  margin-bottom: 15px;
+  text-align: center;
+}
+.form {
+  margin-bottom: 40px;
+  text-align: center;
+  margin-right: 63px;
+}
+.phonebook {
+  font-size: 48px;
+  letter-spacing: -1.92px;
+  line-height: 1.13;
+  margin-bottom: 20px;
+}
+.nametext {
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding-right: 15px;
+}
+.fieldname {
+  width: 264px;
+  height: 40px;
+  border-radius: 4px;
+  outline: transparent;
+  background-color: transparent;
+  border: 1px solid black;
+  color: black;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  padding-left: 16px;
+}
+.error {
+  color: red;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+}
+.numberlabel {
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding-right: 10px;
+}
+.buttonform {
+  color: white;
+  width: 250px;
+  height: 60px;
+  font-size: 18px;
+  line-height: 1.55;
+  text-transform: uppercase;
+  border-radius: 12px;
+  background-color: black;
+  border: none;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 63px;
+  transition: 175ms ease-in-out;
+}
+.buttonform:hover {
+  background-color: rgb(123, 116, 116);
+}
