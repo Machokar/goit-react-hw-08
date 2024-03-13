@@ -3,7 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useId } from 'react';
 import { useDispatch } from 'react-redux';
-import { addContact } from '../../redux/operation';
+import { addContact } from '../../redux/contacts/operation';
 const userSchema = Yup.object().shape({
   name: Yup.string().min(5, 'To short').max(50, 'To long').required('This is a required field'),
   number: Yup.string().min(5, 'To short').max(50, 'To long').required('This is a required field'),
