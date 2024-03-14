@@ -56,7 +56,7 @@ export const LoginForm = () => {
         </div>
         <button type="submit">Log In</button>
         <button>
-          <NavLink to="/register">Don`t have an account? Register here</NavLink>
+          <NavLink to="/register">Register here</NavLink>
         </button>
       </Form>
     </Formik>

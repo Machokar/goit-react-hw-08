@@ -1,9 +1,7 @@
 .nav {
   display: flex;
+  flex-wrap: wrap;
   gap: 16px;
-  padding-top: 16px;
-  padding-bottom: 16px;
-  padding-left: 32px;
 }
 
 .link {
@@ -19,5 +17,5 @@
 }
 
 .active {
-  color: orange;
+  color: blue;
 }
