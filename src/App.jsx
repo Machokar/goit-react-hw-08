@@ -6,11 +6,11 @@ import { Layout } from './Layout';
 import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PrivateRoute';
 import { refreshUser } from './redux/auth/operation';
-import RegisterPage from './pages/Register/Register';
 import ContactsPage from './pages/ContactsPage/ContactsPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import { Login } from './pages/LoadingPage/LoginPage';
 import { Home } from './pages/Home/Home';
+import RegisterPage from './pages/Register/Register';
 
 export const App = () => {
   const dispatch = useDispatch();
