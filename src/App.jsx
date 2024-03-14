@@ -10,7 +10,7 @@ import ContactsPage from './pages/ContactsPage/ContactsPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import { Login } from './pages/LoadingPage/LoginPage';
 import { Home } from './pages/Home/Home';
-import RegisterPage from './pages/Register/Register';
+import RegisterPage from './pages/RegisterPage/RegisterPage';
 
 export const App = () => {
   const dispatch = useDispatch();
