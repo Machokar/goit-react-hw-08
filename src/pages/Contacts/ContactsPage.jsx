@@ -4,7 +4,7 @@ import { SearchBox } from '../../components/SearchBox/SearchBox';
 import { fetchContact } from '../../redux/operations';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import css from './ContactSPage.module.css';
+import css from './ContactsPage.module.css';
 
 const ContactsPage = () => {
   const dispatch = useDispatch();
@@ -12,6 +12,7 @@ const ContactsPage = () => {
   useEffect(() => {
     dispatch(fetchContact());
   }, [dispatch]);
+
   return (
     <div className={css.wrapper}>
       <h1 className={css.text}>Phone Book</h1>
@@ -21,4 +22,5 @@ const ContactsPage = () => {
     </div>
   );
 };
+
 export default ContactsPage;
