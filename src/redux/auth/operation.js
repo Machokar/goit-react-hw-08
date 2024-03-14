@@ -8,7 +8,7 @@ const setAuthHeader = token => {
 };
 
 const clearAuthHeader = () => {
-  delete axios.defaults.headers.common.Authorization;
+  axios.defaults.headers.common.Authorization = '';
 };
 
 export const register = createAsyncThunk('auth/register', async (credentials, thunkAPI) => {
@@ -17,7 +17,7 @@ export const register = createAsyncThunk('auth/register', async (credentials, th
     setAuthHeader(response.data.token);
     return response.data;
   } catch (error) {
-    return thunkAPI.rejectWithValue(error.response.data); // Используйте error.response.data для получения данных об ошибке от сервера
+    return thunkAPI.rejectWithValue(error.response.data);
   }
 });
 
@@ -34,7 +34,7 @@ export const logIn = createAsyncThunk('auth/login', async (credentials, thunkAPI
 export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
     await axios.post('/users/logout');
-    clearAuthHeader(); // Вызов функции clearAuthHeader
+    clearAuthHeader();
   } catch (error) {
     return thunkAPI.rejectWithValue(error.response.data);
   }
