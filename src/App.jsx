@@ -1,61 +1,45 @@
-import './App.css';
-import { ContactList } from './components/Contactlist/Contactlist';
-import { Searchbox } from './components/Searchbox/Searchbox';
-import { Contactform } from './components/Contactform/Contactform';
-import { lazy, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchContacts } from './redux/contacts/operation';
-import { selectError, selectLoading } from './redux/contacts/selectors';
-import { Loading } from './components/Loader/Loading';
-import { Errormessage } from './components/Error/Errormessage';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { Navigation } from './Navigation/Navigation';
+import { useAuth } from './hook';
+import { Layout } from './Layout';
 import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PrivateRoute';
-import { Layout } from './Layout';
-const Home = lazy(() => import('./pages/Home/Home'));
-const RegisterPage = lazy(() => import('./pages/Register/Register'));
-const Login = lazy(() => import('./pages/LoadingPage/LoginPage'));
-const ContactsPage = lazy(() => import('./pages/ContactsPage/ContactsPage'));
-const NotFoundPage = () => import('./pages/NotFoundPage/NotFoundPage');
+import { refreshUser } from './redux/auth/operation';
+import RegisterPage from './pages/Register/Register';
+import ContactsPage from './pages/ContactsPage/ContactsPage';
+import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
+import { Login } from './pages/LoadingPage/LoginPage';
+import { Home } from './pages/Home/Home';
 
 export const App = () => {
-  const loading = useSelector(selectLoading);
-  const error = useSelector(selectError);
   const dispatch = useDispatch();
+  const { isRefreshing } = useAuth();
+
   useEffect(() => {
-    dispatch(fetchContacts());
+    dispatch(refreshUser());
   }, [dispatch]);
-  return (
-    <div>
-      {loading && <Loading />}
-      {error && <Errormessage />}
-      <Navigation />
-      <Contactform />
-      <Searchbox />
-      <ContactList />
-      return isRefreshing ? (<b>Refreshing user...</b>) : (
-      <div>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} />
-            <Route
-              path="/register"
-              element={<RestrictedRoute redirectTo="/contacts" component={<RegisterPage />} />}
-            />
-            <Route
-              path="/login"
-              element={<RestrictedRoute redirectTo="/contacts" component={<Login />} />}
-            />
-            <Route
-              path="/contacts"
-              element={<PrivateRoute redirectTo="/login" component={<ContactsPage />} />}
-            />
-            <Route path="*" element={<NotFoundPage />}></Route>
-          </Route>
-        </Routes>
-      </div>
-      );
-    </div>
+
+  return isRefreshing ? (
+    <b>Refreshing user...</b>
+  ) : (
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route
+          path="/register"
+          element={<RestrictedRoute redirectTo="/contacts" component={<RegisterPage />} />}
+        />
+        <Route
+          path="/login"
+          element={<RestrictedRoute redirectTo="/contacts" component={<Login />} />}
+        />
+        <Route
+          path="/contacts"
+          element={<PrivateRoute redirectTo="/login" component={<ContactsPage />} />}
+        />
+      </Route>
+      <Route path="*" element={<NotFoundPage />} />
+    </Routes>
   );
 };

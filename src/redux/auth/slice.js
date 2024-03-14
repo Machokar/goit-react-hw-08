@@ -29,17 +29,20 @@ const authSlice = createSlice({
         state.token = null;
         state.isLoggedIn = false;
       })
-      .addCase(refreshUser.pending, state => {
-        state.isRefreshing = true;
-      })
       .addCase(refreshUser.fulfilled, (state, action) => {
-        state.user = action.payload;
+        if (action.payload.user) {
+          state.user = action.payload.user;
+        }
         state.isLoggedIn = true;
         state.isRefreshing = false;
+      })
+      .addCase(refreshUser.pending, state => {
+        state.isRefreshing = true;
       })
       .addCase(refreshUser.rejected, state => {
         state.isRefreshing = false;
       });
   },
 });
+
 export const authReducer = authSlice.reducer;

@@ -1,0 +1,23 @@
+.nav {
+  display: flex;
+  gap: 16px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  padding-left: 32px;
+}
+
+.link {
+  color: black;
+  display: inline-block;
+  text-decoration: none;
+  padding: 12px;
+  font-weight: 700;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.active {
+  color: orange;
+}
