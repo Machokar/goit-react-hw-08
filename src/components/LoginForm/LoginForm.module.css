@@ -2,9 +2,6 @@
   width: 300px;
   margin-bottom: 20px;
   padding: 8px;
-  border: 1px solid black;
-  border-radius: 4px;
-
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -28,21 +25,31 @@
   margin-bottom: 5px;
 }
 .button {
-  padding: 7px 5px;
+  background-color: rgb(15, 150, 253);
+
   border: none;
   border-radius: 5px;
   font-weight: bold;
   cursor: pointer;
-  width: 50%;
+  width: 200px;
   margin: 0 auto;
-  background-color: rgb(220, 233, 243);
+  padding: 7px 5px;
 }
+
 .button:hover {
-  background-color: rgb(154, 197, 231);
+  background-color: rgb(137, 140, 142);
 }
+
 .input {
   padding: 5px;
-  border: 1px solid #ccc;
   border-radius: 5px;
   outline: none;
+}
+
+.link {
+  color: black;
+  display: inline-block;
+  text-decoration: none;
+
+  font-weight: 700;
 }

@@ -1,16 +1,17 @@
 import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, lazy } from 'react';
+import { useAuth } from './hook/useAuth';
+import { refreshUser } from './redux/auth/operationAuth';
 import { Route, Routes } from 'react-router-dom';
-import { useAuth } from './hook';
 import { Layout } from './Layout';
 import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PrivateRoute';
-import { refreshUser } from './redux/auth/operation';
-import ContactsPage from './pages/ContactsPage/ContactsPage';
-import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
-import { Login } from './pages/LoadingPage/LoginPage';
-import { Home } from './pages/Home/Home';
-import RegisterPage from './pages/RegisterPage/RegisterPage';
+import NotFoundPage from './pages/Not Found Page/NotFoundPage';
+
+const Home = lazy(() => import('./pages/Home/Home'));
+const RegisterPage = lazy(() => import('./pages/RegisterPage/RegisterPage'));
+const LoginPage = lazy(() => import('./pages/LogIn/LoginPage'));
+const ContactsPage = lazy(() => import('./pages/Contacts/ContactsPage'));
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -32,7 +33,7 @@ export const App = () => {
         />
         <Route
           path="/login"
-          element={<RestrictedRoute redirectTo="/contacts" component={<Login />} />}
+          element={<RestrictedRoute redirectTo="/contacts" component={<LoginPage />} />}
         />
         <Route
           path="/contacts"

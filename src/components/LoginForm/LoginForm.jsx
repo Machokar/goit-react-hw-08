@@ -1,9 +1,9 @@
 import { useDispatch } from 'react-redux';
+import { logIn } from '../../redux/auth/operationAuth';
+import css from './LoginForm.module.css';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import { useId } from 'react';
-import { NavLink } from 'react-router-dom';
-import { logIn } from '../../redux/auth/operation';
 
 const loginSchema = Yup.object().shape({
   email: Yup.string().min(3, 'Too Short!').max(50, 'Too Long!').required('Required'),
@@ -44,19 +44,22 @@ export const LoginForm = () => {
       validationSchema={loginSchema}
       onSubmit={handleSubmit}
     >
-      <Form onSubmit={handleSubmit} autoComplete="off">
-        <div>
-          <label htmlFor={emailId}>Email:</label>
+      <Form className={css.form} onSubmit={handleSubmit} autoComplete="off">
+        <div className={css.formGroup}>
+          <label className={css.label} htmlFor={emailId}>
+            Email:
+          </label>
           <Field type="text" name="email" id={emailId} autoComplete="username" />
-          <ErrorMessage name="email" component="span" />
+          <ErrorMessage className={css.error} name="email" component="span" />
         </div>
-        <div>
-          <label htmlFor={passId}>Password:</label>
+        <div className={css.formGroup}>
+          <label className={css.label} htmlFor={passId}>
+            Password:
+          </label>
           <Field type="password" name="password" id={passId} autoComplete="current-password" />
         </div>
-        <button type="submit">Log In</button>
-        <button>
-          <NavLink to="/register">Register here</NavLink>
+        <button className={css.button} type="submit">
+          Log In
         </button>
       </Form>
     </Formik>
