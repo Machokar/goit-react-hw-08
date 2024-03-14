@@ -1,5 +1,5 @@
-import { ContactList } from '../../components/ContactList/ContactList';
-import { SearchBox } from '../../components/SearchBox/SearchBox';
+import { ContactList } from '../../components/ContactList/ContactLis';
+import { SearchBox } from '../../components/SearchBox/Search';
 import { fetchContact } from '../../redux/operations';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';

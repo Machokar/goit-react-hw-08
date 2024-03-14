@@ -27,10 +27,10 @@ export const LoginForm = () => {
     )
       .unwrap()
       .then(() => {
-        console.log('login success');
+        console.log(' success');
       })
       .catch(() => {
-        console.log('login error');
+        console.log('error');
       });
     form.reset();
   };
